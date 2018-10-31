@@ -30,4 +30,13 @@ RUN apt-get update && \
 # add user to docker group
 RUN usermod -aG docker $NB_USER
 
+# R pre-requisites
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    fonts-dejavu \
+    tzdata \
+    gfortran \
+    gcc && apt-get clean && \
+    rm -rf /var/lib/apt/lists/*    
+
 
