@@ -30,6 +30,4 @@ RUN apt-get update && \
 # add user to docker group
 RUN usermod -aG docker $NB_USER
 
-RUN conda install --quiet --yes \
-    -c conda-forge ipywidgets jupyter_contrib_nbextensions
 
