@@ -27,8 +27,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-# Switch back to jovyan to avoid accidental container runs as root
-USER $NB_UID
+# add user to docker group
+RUN usermod -aG docker $NB_USER
 
 RUN conda install --quiet --yes \
     -c conda-forge ipywidgets jupyter_contrib_nbextensions
