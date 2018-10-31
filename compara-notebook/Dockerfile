@@ -39,4 +39,14 @@ RUN apt-get update && \
     gcc && apt-get clean && \
     rm -rf /var/lib/apt/lists/*    
 
+# add java8 oracle
+RUN sudo add-apt-repository ppa:webupd8team/java && \
+    echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" | sudo debconf-set-selections && \
+    sudo apt-get install -y oracle-java8-installer && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
+
+
+# Switch back to jovyan to avoid accidental container runs as root
+USER $NB_UID
