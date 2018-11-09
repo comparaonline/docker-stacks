@@ -97,5 +97,15 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# install dependencies for compile lightGBM
+RUN apt-get update && \
+    apt-get install --no-install-recommends && \
+      cmake && \
+      libboost-dev && \
+      libboost-system-dev && \
+      libboost-filesystem-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
