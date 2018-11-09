@@ -107,5 +107,11 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# library for render trees on sckit-learn
+RUN apt-get update && \
+    apt install graphviz && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Switch back to jovyan to avoid accidental container runs as root
 USER $NB_UID
