@@ -91,15 +91,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && \
-      apt-get install nvinfer-runtime-trt-repo-ubuntu1604-4.0.1-ga-cuda9.0 && \
-      apt-get update && \
-      apt-get install libnvinfer4=4.1.2-1+cuda9.0 && \
+      apt-get install -y --no-install-recommends && \
+      nvinfer-runtime-trt-repo-ubuntu1604-4.0.1-ga-cuda9.0 && \
+      libnvinfer4=4.1.2-1+cuda9.0 && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 # install dependencies for compile lightGBM
 RUN apt-get update && \
-    apt-get install --no-install-recommends && \
+    apt-get install -y --no-install-recommends  && \
       cmake && \
       libboost-dev && \
       libboost-system-dev && \
@@ -109,7 +109,7 @@ RUN apt-get update && \
 
 # library for render trees on sckit-learn
 RUN apt-get update && \
-    apt install graphviz && \
+    apt-get install  -y --no-install-recommends  graphviz && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
